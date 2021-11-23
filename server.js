@@ -20,6 +20,12 @@ io.on('connection', function (socket) {
     });
 });
 
-server.listen(8080, function() {
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+//app.listen(port);
+
+server.listen(port, function() {
     console.log('Chat server running');
 });
