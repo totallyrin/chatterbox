@@ -7,7 +7,7 @@ button.addEventListener('click', updateButton);
 function updateButton() {
     
     var main = document.querySelector('main');
-    var li = document.querySelector('#history li:nth-child(2)');
+    var li = document.querySelector('#history li:nth-child(1)');
     var form = document.querySelector('form');
     var input = document.querySelector('#initials');
     var input2 = document.querySelector('#message');
