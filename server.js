@@ -11,6 +11,9 @@ var io = require('socket.io')(server);
 var messageHistory = [];
 
 io.on('connection', function (socket) {
+    for (let i = 0; i < messageHistory.length; i++) {
+        io.emit('message', messageHistory[i]);
+    }
     socket.on('message', function (msg) {
         messageHistory.push(msg);
         io.emit('message', msg);
@@ -24,7 +27,5 @@ if (port == null || port == "") {
 
 server.listen(port, function() {
     console.log('Chat server running');
-    for (let i = 0; i < messageHistory.length; i++) {
-        io.emit('message', messageHistory[i]);
-    }
+    
 });
