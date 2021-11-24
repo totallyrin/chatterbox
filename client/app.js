@@ -5,18 +5,23 @@ const button = document.querySelector(".darkmode");
 button.addEventListener('click', updateButton);
 
 function updateButton() {
-    
-    var main = document.querySelector('main');
-    var li = document.querySelector('#history li:nth-child(1)');
-    var form = document.querySelector('form');
-    var input = document.querySelector('#initials');
-    var input2 = document.querySelector('#message');
-    
+
     document.body.classList.toggle('dark');
+
+    var main = document.querySelector('main');
     main.classList.toggle('dark');
-    li.classList.toggle('dark');
+
+    var li = document.querySelectorAll('li:nth-child(odd)');
+    for (var i = 0; i < li.length; i++) {
+        li[i].classList.toggle('dark');
+    }
+
+    var form = document.querySelector('form');
     form.classList.toggle('dark');
+
+    var input = document.querySelector('#initials');
     input.classList.toggle('dark');
+    var input2 = document.querySelector('#message');
     input2.classList.toggle('dark');
     
     if (button.value === 'DARK MODE') {
