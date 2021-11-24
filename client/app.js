@@ -40,7 +40,7 @@ $('form').on('submit', function () {
     }
     // emit message if valid
     else {
-        var text = initials + " says: " + msg;
+        var text = "<b>" + initials + " says: </b>" + msg;
         socket.emit('message', text);
         $('#message').val(' ');
         return false;
@@ -58,5 +58,7 @@ $('form').on('submit', function () {
 //});
 
 socket.on('message', function (msg) {
-   $('<li>').text(msg).appendTo('#history');
+    $('<li>').html(msg).appendTo('#history');
+    var main = document.querySelector('main');
+    main.scrollTo(0, main.scrollHeight);
 });

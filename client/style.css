@@ -2,7 +2,7 @@ body {
     background-color: white;
     color: #303030;
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    margin: 20px;
+    padding: 20px;
     transition: background 0.2s linear;
 }
 
@@ -15,10 +15,10 @@ main {
     background-color: #f0f0f0;
     border-radius: 6px;
     box-shadow: 3px 3px 12px #c8c8c8;
-    margin: 20px auto;
-    max-width: 465px;
-    max-height: 500px;
+    max-width: 90vw;
+    max-height: 90vh;
     padding: 20px 20px 0;
+    margin: auto auto;
     overflow: auto;
     transition: background 0.2s linear;
 }
