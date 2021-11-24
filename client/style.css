@@ -3,6 +3,11 @@ body {
     color: #303030;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 20px;
+    transition: background 0.2s linear;
+}
+
+body.dark {
+    background-color: #292929;
 }
 
 main {
@@ -10,8 +15,30 @@ main {
     border-radius: 6px;
     box-shadow: 3px 3px 12px #c8c8c8;
     margin: 20px auto;
-    max-width: 450px;
-    padding: 20px;
+    max-width: 465px;
+    max-height: 500px;
+    padding: 20px 20px 0;
+    overflow: auto;
+    transition: background 0.2s linear;
+}
+
+main.dark {
+    background-color: #1f1f1f;
+    box-shadow: 3px 3px 12px black;
+    color: white;
+}
+
+.darkmode {
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    margin: 10px auto; 
+    display: block;  
 }
 
 ol {
@@ -29,13 +56,24 @@ li {
 li:nth-child(odd) {
     background-color: #e3e3e3;
     border-radius: 6px;
+    transition: background 0.2s linear;
+}
+
+.li.dark {
+    background-color: black;
 }
 
 form {
     background-color: lightsteelblue;
     border-radius: 6px;
-    margin: 0;
+    margin-top: 20px;
     padding: 10px;
+    transition: background 0.2s linear;
+}
+
+form.dark {
+    background-color: #333743;
+    color: white;
 }
 
 button {
@@ -47,6 +85,7 @@ button {
     font-weight: bold;
     padding: 5px 10px;
     text-transform: uppercase;
+    transition: background 0.2s linear;
 }
 
 input {
@@ -54,6 +93,11 @@ input {
     border-radius: 3px;
     font-size: 15px;
     padding: 5px;
+}
+
+input.dark {
+    background-color: #292929;
+    color: white;
 }
 
 #initials {

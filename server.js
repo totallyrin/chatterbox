@@ -15,6 +15,7 @@ io.on('connection', function (socket) {
         io.emit('message', messageHistory[i]);
     }
     socket.on('message', function (msg) {
+        console.log("Received Message: ", msg);
         messageHistory.push(msg);
         io.emit('message', msg);
     });
