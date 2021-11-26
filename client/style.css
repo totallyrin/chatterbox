@@ -16,9 +16,9 @@ main {
     border-radius: 6px;
     box-shadow: 3px 3px 12px #c8c8c8;
     max-width: 90vw;
-    max-height: 90vh;
+    max-height: 85vh;
     padding: 20px 20px 0;
-    margin: auto auto;
+    margin: auto auto 20px;
     overflow: auto;
     transition: background 0.2s linear;
 }
@@ -51,6 +51,7 @@ ol {
 
 li {
     padding: 10px;
+    word-wrap: break-word;
 }
 
 li:nth-child(odd) {
@@ -60,7 +61,7 @@ li:nth-child(odd) {
 }
 
 li:nth-child(odd).dark {
-    background-color: black;
+    background-color: #0f0f0f;
 }
 
 form {
@@ -101,9 +102,14 @@ input.dark {
 }
 
 #initials {
-    width: 40px;
+    width: 4vw;
 }
 
 #message {
-    width: 83vw;
+    width: 80vw;
+}
+
+#darkmode {
+    padding-top: 20px;
+    margin: 20px;
 }
