@@ -1,19 +1,25 @@
 var socket = io();
 
 const button = document.querySelector(".darkmode");
-
+var darkmode = false;
 button.addEventListener('click', updateButton);
 
+// dark mode code
 function updateButton() {
-
+    darkmode = !darkmode
     document.body.classList.toggle('dark');
 
     var main = document.querySelector('main');
     main.classList.toggle('dark');
 
-    var li = document.querySelectorAll('li:nth-child(odd)');
+    var li = document.querySelectorAll('li:nth-child(even)');
     for (var i = 0; i < li.length; i++) {
         li[i].classList.toggle('dark');
+    }
+
+    var li_n = document.querySelectorAll('li:nth-child(odd)');
+    for (var j = 0; j < li_n.length; j++) {
+        li_n[j].classList.toggle('dark');
     }
 
     var form = document.querySelector('form');
@@ -31,6 +37,7 @@ function updateButton() {
     }
 }
 
+// code to send messages
 $('form').on('submit', function () {
     var initials = $('#initials').val();
     var msg = $('#message').val();
@@ -42,23 +49,18 @@ $('form').on('submit', function () {
     else {
         var text = "<b>" + initials + " says: </b>" + msg;
         socket.emit('message', text);
-        $('#message').val(' ');
+        $('#message').val('');
         return false;
     }
 });
 
-//$('button').on('click', function() {
-//    var text = $('#message').val();
-//    var who = $('#initials').val();
-//    
-//    socket.emit('message', who + ": " + text);
-//    $('#message').val('');
-//    
-//    return false;
-//});
-
+// code to display incoming message(s)
 socket.on('message', function (msg) {
-    $('<li>').html(msg).appendTo('#history');
+    // if dark mode is enabled, incoming messages should be in dark theme
+    if (darkmode)
+        $('<li class="dark">').html(msg).appendTo('#history');
+    else
+        $('<li>').html(msg).appendTo('#history');
     var main = document.querySelector('main');
     main.scrollTo(0, main.scrollHeight);
 });

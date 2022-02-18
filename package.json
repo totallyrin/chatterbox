@@ -1,7 +1,7 @@
 {
   "name": "lighthouse-labs",
   "version": "1.0.0",
-  "description": "",
+  "description": "learning javascript by creating a chatbot",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "socket.io": "^4.4.0"
-  }
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/totallyrin/chatterbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/totallyrin/chatterbox/issues"
+  },
+  "homepage": "https://github.com/totallyrin/chatterbox#readme"
 }
