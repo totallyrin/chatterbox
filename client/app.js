@@ -1,6 +1,6 @@
 let socket = io();
 
-const button = document.querySelector(".darkmode");
+const button = document.querySelector("#darkmode");
 let darkmode = false;
 button.addEventListener('click', updateButton);
 

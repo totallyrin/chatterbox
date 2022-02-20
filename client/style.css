@@ -28,19 +28,6 @@ main.dark {
     box-shadow: 3px 3px 12px black;
 }
 
-.darkmode {
-    background-color: cornflowerblue;
-    border: none;
-    border-radius: 3px;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 5px 10px;
-    text-transform: uppercase;
-    margin: 10px auto; 
-    display: block;  
-}
-
 ol {
     list-style: none;
     margin-bottom: 20px;
@@ -70,6 +57,7 @@ form {
     margin-top: 20px;
     padding: 10px;
     transition: background 0.2s linear;
+    display: -webkit-flex;
 }
 
 form.dark {
@@ -102,14 +90,39 @@ input.dark {
 }
 
 #initials {
-    width: 4vw;
+    width: 80px;
+    float: left;
+    margin-right: 5px;
+    font-weight: bold;
 }
 
 #message {
-    width: 80vw;
+    -webkit-flex: 1;
+}
+
+#send {
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    transition: background 0.2s linear;
+    float: right;
+    margin-left: 5px;
 }
 
 #darkmode {
-    padding-top: 20px;
-    margin: 20px;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    margin: 10px auto;
+    display: block;
 }
