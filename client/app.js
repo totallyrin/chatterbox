@@ -50,9 +50,7 @@ $('form').on('submit', function () {
     }
     // emit message if valid
     else {
-        let date = new Date;
-        let time = date.getHours() + ":" + date.getMinutes();
-        let text = time + " <b>| " + initials + " says: </b>" + msg;
+        let text = " <b>| " + initials + " says: </b>" + msg;
         socket.emit('message', text);
         $('#message').val('');
         return false;

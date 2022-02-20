@@ -32,27 +32,35 @@ function getWeather(callback) {
     })
 }
 
+function timeStamp() {
+    let date = new Date;
+    let hours = date.getHours();
+    if (hours.toString().length < 2)
+       hours = '0' + hours;
+    let mins = date.getMinutes();
+    if (mins.toString().length < 2)
+        mins = '0' + mins
+    return hours + ':' + mins
+}
+
 io.on('connection', function (socket) {
     for (let i = 0; i < messageHistory.length; i++) {
-        io.emit('message', messageHistory[i]);
+        socket.emit('message', messageHistory[i]);
     }
     socket.on('message', function (msg) {
+        msg = timeStamp() + msg;
         console.log("Received Message: ", msg);
         messageHistory.push(msg);
         io.emit('message', msg);
         if (askingTime(msg) && isQuestion(msg)) {
-            let date = new Date;
-            let time = date.getHours() + ":" + date.getMinutes();
-            let text = time + " <b>| BIXBY says: </b>The current date and time is " + new Date + ".";
+            let text = timeStamp() + " <b>| BIXBY says: </b>The current date and time is " + new Date + ".";
             console.log("Sent message: ", text);
             messageHistory.push(text);
             io.emit('message', text);
         }
         if (askingWeather(msg) && isQuestion(msg)) {
             getWeather(function(weather, place, date) {
-                let currDate = new Date;
-                let time = currDate.getHours() + ":" + currDate.getMinutes();
-                let text = time + " <b>| BIXBY says: </b>The weather in " + place + " on " + date + " is " + weather + ".";
+                let text = timeStamp() + " <b>| BIXBY says: </b>The weather in " + place + " on " + date + " is " + weather + ".";
                 console.log("Sent message: ", text);
                 messageHistory.push(text);
                 io.emit('message', text);
