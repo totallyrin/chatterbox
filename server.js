@@ -45,7 +45,7 @@ function timeStamp() {
 
 io.on('connection', function (socket) {
     for (let i = 0; i < messageHistory.length; i++) {
-        socket.emit('message', messageHistory[i]);
+        socket.emit('message', timeStamp() + messageHistory[i]);
     }
     socket.on('message', function (msg) {
         let received = timeStamp() + msg;
