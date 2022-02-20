@@ -22,6 +22,10 @@ function askingWeather(msg) {
     return msg.match(/weather/i);
 }
 
+function sayHello(msg) {
+    return msg.match(/bixby/i);
+}
+
 function getWeather(callback) {
     let request = require('request');
     request.get('https://www.metaweather.com/api/location/4118', function (error, response) {
@@ -43,27 +47,35 @@ function timeStamp() {
     return hours + ':' + mins
 }
 
+function receiveMsg(msg) {
+    let received = timeStamp() + msg;
+    console.log("Received Message: ", received);
+    messageHistory.push(msg);
+    io.emit('message', received);
+}
+
+function sendMsg(msg) {
+    let text = " <b>| BIXBY says: </b>" + msg;
+    console.log("Sent message: ", timeStamp() + text);
+    messageHistory.push(text);
+    io.emit('message', timeStamp() + text);
+}
+
 io.on('connection', function (socket) {
     for (let i = 0; i < messageHistory.length; i++) {
         socket.emit('message', timeStamp() + messageHistory[i]);
     }
     socket.on('message', function (msg) {
-        let received = timeStamp() + msg;
-        console.log("Received Message: ", received);
-        messageHistory.push(msg);
-        io.emit('message', received);
+        receiveMsg(msg)
+        if (sayHello(msg) && !askingTime(msg) && !askingWeather(msg)) {
+            sendMsg("Hi! I'm BIXBY! Try asking me about the weather or the time!")
+        }
         if (askingTime(msg) && isQuestion(msg)) {
-            let text = timeStamp() + " <b>| BIXBY says: </b>The current date and time is " + new Date + ".";
-            console.log("Sent message: ", text);
-            messageHistory.push(text);
-            io.emit('message', text);
+            sendMsg("The current date and time is " + new Date + ".");
         }
         if (askingWeather(msg) && isQuestion(msg)) {
             getWeather(function(weather, place, date) {
-                let text = timeStamp() + " <b>| BIXBY says: </b>The weather in " + place + " on " + date + " is " + weather + ".";
-                console.log("Sent message: ", text);
-                messageHistory.push(text);
-                io.emit('message', text);
+                sendMsg("The weather in " + place + " on " + date + " is " + weather + ".");
             })
         }
     });
