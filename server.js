@@ -51,7 +51,7 @@ io.on('connection', function (socket) {
         let received = timeStamp() + msg;
         console.log("Received Message: ", received);
         messageHistory.push(msg);
-        io.emit('message', msg);
+        io.emit('message', received);
         if (askingTime(msg) && isQuestion(msg)) {
             let text = timeStamp() + " <b>| BIXBY says: </b>The current date and time is " + new Date + ".";
             console.log("Sent message: ", text);
