@@ -48,8 +48,8 @@ io.on('connection', function (socket) {
         socket.emit('message', messageHistory[i]);
     }
     socket.on('message', function (msg) {
-        msg = timeStamp() + msg;
-        console.log("Received Message: ", msg);
+        let received = timeStamp() + msg;
+        console.log("Received Message: ", received);
         messageHistory.push(msg);
         io.emit('message', msg);
         if (askingTime(msg) && isQuestion(msg)) {
